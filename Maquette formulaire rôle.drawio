@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-04-17T09:54:31.421Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0" etag="bwtaI66bYOdlNShG7KHS" version="21.1.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-04-17T09:55:00.731Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0" etag="i-vzg8jTGBeXEM_yhNpo" version="21.1.8" type="github">
   <diagram name="Page-1" id="-WmRzo-UNHprRH1_R65h">
-    <mxGraphModel dx="1434" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="2390" dy="1257" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -29,19 +29,19 @@
           <mxGeometry x="10" y="767" width="1150" height="60" as="geometry" />
         </mxCell>
         <mxCell id="8fceIVDhUmT7ji_Avb1O-9" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="345" y="149" width="480" height="211" as="geometry" />
+          <mxGeometry x="345" y="203" width="480" height="211" as="geometry" />
         </mxCell>
         <mxCell id="8fceIVDhUmT7ji_Avb1O-11" value="&lt;b&gt;Formulaire casting&lt;br&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="471.75" y="170" width="226.5" height="30" as="geometry" />
+          <mxGeometry x="471.75" y="224" width="226.5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="8fceIVDhUmT7ji_Avb1O-15" value="Rôle :" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="458" y="230" width="36.88" height="30" as="geometry" />
+          <mxGeometry x="458" y="284" width="36.88" height="30" as="geometry" />
         </mxCell>
         <mxCell id="8fceIVDhUmT7ji_Avb1O-16" value="Valider" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="545" y="290" width="80" height="30" as="geometry" />
+          <mxGeometry x="545" y="344" width="80" height="30" as="geometry" />
         </mxCell>
         <mxCell id="8fceIVDhUmT7ji_Avb1O-21" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="505.76" y="230" width="204.75" height="30" as="geometry" />
+          <mxGeometry x="505.76" y="284" width="204.75" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
