@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-17T09:41:38.902Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0" etag="R2ctRQElmlpIxJefYE9W" version="21.1.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-04-17T09:52:18.358Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0" etag="jvfJUq_-teG0XlMOPgfV" version="21.1.8" type="github">
   <diagram name="Page-1" id="1hrMliXUyaiEVK_QisMv">
     <mxGraphModel dx="1434" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -70,7 +70,7 @@
         <mxCell id="t0LKm3EGDs16AiwfEuaH-37" value="" style="triangle;whiteSpace=wrap;html=1;rotation=90;" vertex="1" parent="1">
           <mxGeometry x="675" y="430" width="10" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="t0LKm3EGDs16AiwfEuaH-38" value="&lt;div align=&quot;center&quot;&gt;&lt;i&gt;Si le rôle n&#39;apparait pas dans la liste veuillez remplir le formulaire d&#39;ajout de rôle en &lt;font color=&quot;#a9c4eb&quot;&gt;cliquant ici.&lt;/font&gt;&lt;/i&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+        <mxCell id="t0LKm3EGDs16AiwfEuaH-38" value="&lt;div align=&quot;center&quot;&gt;&lt;i&gt;Si le rôle n&#39;apparait pas dans la liste veuillez remplir le formulaire rôle en &lt;font color=&quot;#a9c4eb&quot;&gt;cliquant ici.&lt;/font&gt;&lt;/i&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="425" y="460" width="320" height="50" as="geometry" />
         </mxCell>
       </root>
