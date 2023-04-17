@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="http://localhost/appli-cinema/appli_cinema/www/css/style.css">
     <title><?=$title?></title>
 </head>
 <body>
@@ -14,7 +14,7 @@
             <div id="wrap">
                 <ul class="navbar">
                     <li>
-                        <a href="app/view/acceuil.php">Acceuil</a>
+                        <a href="http://localhost/appli-cinema/appli_cinema/app/view/accueil.php">Acceuil</a>
                     </li>
                     <li>
                         <a href="#" class="deroulant">Filtrer affichages  <span class="material-symbols-outlined">arrow_drop_down</span></a>
