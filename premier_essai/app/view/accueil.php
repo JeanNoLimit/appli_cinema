@@ -4,19 +4,19 @@ ob_start();
 require_once "../model/modele.php";
 
 
-// <!-- insérer tableau avec la liste complète des films -->
+//Tableau avec la liste complète des films -->
 
-echo "<main>
-        <div class=container>",
+echo "<main>",
+        "<div class=container>",
             "<table class='tableFilm'>",
-                "<thread>",
+                "<thead>",
                     "<tr>",
                         "<th>Titre</th>",
                         "<th>Réalisateur</th>",
                         "<th>Année de sortie</th>",
                         "<th>Durée</th>",
                     "</tr>",
-                "</thread>",
+                "</thead>",
                 "<tbody>";
 $listeFilms=affichage_accueil();
 foreach($listeFilms as $film){

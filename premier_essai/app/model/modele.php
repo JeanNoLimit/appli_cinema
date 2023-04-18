@@ -14,6 +14,7 @@ function connect_db(){
         return $db;
 }
 
+// Gère l'affichage de la page d'accueil. affiche la liste complète des films avec leurs titres, nom et prénom du réalisateur, l'année de sortie et la durée des films.
 function affichage_accueil(){
     $db=connect_db();
     
@@ -27,4 +28,14 @@ function affichage_accueil(){
     return $listeFilms;
 }
 
+// Gère  l'affichage de la liste des genres.
+function affichage_genres(){
+    $db=connect_db();
+
+    $mysqlQuery='SELECT libelle_genre AS genre, COUNT(id_film) AS filmParGenre
+                FROM  genre g
+                INNER JOIN posseder p ON g.id_genre=p.id_genre
+                GROUP BY libelle_genre
+                ORDER BY filmParGenre DESC;';
+}
 ?>
