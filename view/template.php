@@ -14,7 +14,7 @@
             <div id="wrap">
                 <ul class="navbar">
                     <li>
-                        <a href="listFilms.php">Acceuil</a>
+                        <a href="http://localhost/appli-cinema/appli_cinema/index.php?action=listFilms">Acceuil</a>
                     </li>
                     <li>
                         <a href="#" class="deroulant">Filtrer affichages  <span class="material-symbols-outlined">arrow_drop_down</span></a>

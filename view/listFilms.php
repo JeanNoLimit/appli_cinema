@@ -30,6 +30,7 @@
 $title="Liste des films";
 $titre_secondaire="Liste des films";
 $contenu = ob_get_clean();
+// injecte le contenu dans le template "squelette" ->template.php
 require "view/template.php";
 
 ?>
