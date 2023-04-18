@@ -43,15 +43,23 @@ class CinemaController {
 
     //Méthode pour lister les genres
 
-        public function listGenres() {
-            $pdo = Connect::seConnecter();
-            $requete = $pdo->query('SELECT libelle_genre AS genre, COUNT(id_film) AS filmParGenre
-                                    FROM  genre g
-                                    LEFT JOIN posseder p ON g.id_genre=p.id_genre
-                                    GROUP BY libelle_genre
-                                    ORDER BY filmParGenre DESC;'
-            );
-            require "view/parGenres.php";
-        }
+    public function listGenres($id) {
+        $pdo = Connect::seConnecter();
+        $requete_genre = $pdo->query('SELECT g.id_genre AS id, libelle_genre, COUNT(id_film) AS filmParGenre
+                                FROM  genre g
+                                LEFT JOIN posseder p ON g.id_genre=p.id_genre
+                                GROUP BY g.id_genre
+                                ORDER BY filmParGenre DESC;'
+        );
+    
+        $requete_liste = $pdo->prepare('SELECT titre, DATE_FORMAT(date_sortie, "%Y") AS anne_sortie
+                                FROM film f
+                                INNER JOIN posseder p ON f.id_film=p.id_film
+                                INNER JOIN genre g ON p.id_genre=g.id_genre
+                                WHERE g.id_genre= :id');
+        $requete_liste ->execute(["id" => $id]);
+        require "view/parGenres.php";
+    }
+    
     
 }

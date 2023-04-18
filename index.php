@@ -15,6 +15,8 @@ spl_autoload_register(function($class_name){
 // On instancie le controller Cinema (qui contient l'ensemble des requêtes dans les fonctions en relation avec les vues)
 $ctrlCinema = new CinemaController();
 
+
+$id=(isset($_GET["id"])) ? $_GET["id"] : null;
 //Pour affichage de la page d'accueil avant toute action
 if(!isset($_GET["action"])){
     $ctrlCinema->listFilms();
@@ -26,7 +28,7 @@ elseif(isset($_GET["action"])){
         case "listFilms" : $ctrlCinema->listFilms(); break;
         case "listActeurs" : $ctrlCinema->listActeurs(); break;
         case "listRealisateurs" : $ctrlCinema->listRealisateurs(); break;
-        case "listGenres" : $ctrlCinema->listGenres(); break; //affichage de la page "par genre"
-        // case "parGenres" : $ctrlCinema->parGenres(); break; //afficher le détail de la liste par genre.
+        case "listGenres" : $ctrlCinema->listGenres($id); break; //affichage de la page "par genre"
+
     }
 }
