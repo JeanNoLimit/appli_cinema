@@ -15,19 +15,15 @@
                     <tr>
                         <td><?=$acteur['prenom']?></td>
                         <td><?=$acteur['nom']?></td>
-                        
                     </tr>       
       <?php  } ?>
     </tbody>
 </table>
 
-
 <?php
-
 $titre="Liste des acteurs";
 $titre_secondaire="Liste des acteurs";
 $contenu = ob_get_clean();
 // injecte le contenu dans le template "squelette" ->template.php
 require "view/template.php";
-
 ?>
