@@ -3,7 +3,7 @@
 
 <p class="compteur">Il y a <?= $requete->rowCount() ?> films</p>
 
-<table class="uk-table uk-table-striped">
+<table class="table_affichage">
     <thead>
         <tr>
             <th>Titre</th>
@@ -16,7 +16,7 @@
         <?php
             foreach($requete->fetchAll() as $film) {?>
                 <tr>
-                    <td> <?= $film['titre'] ?></td>
+                    <td class="titre_film"> <?= $film['titre'] ?></td>
                     <td> <?= $film['nom']." ". $film['prenom'] ?></td>
                     <td> <?= $film['anne_sortie'] ?></td>
                     <td> <?= $film['duree'] ?></td>

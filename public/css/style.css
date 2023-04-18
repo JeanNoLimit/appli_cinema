@@ -64,7 +64,49 @@ a:hover {
 }
 
 
-/***** PAGE GENRE ********/
+/******************  Body  *****************************/
+
+#contenu{
+    margin-top: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+/******************  table  *****************************/
+
+.table_affichage {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+thead{
+    border-bottom: #808080 solid 2px;
+    background-color: #1d2024;
+    color: white;
+
+}
+.titre_film {
+    text-align: left;
+}
+
+th, td {
+    padding: 10px 15px;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+
+tbody tr:nth-child(odd) {
+    background-color:#d4d4d4
+  }
+  
+
+
+
+
+/****************** PAGE GENRE ************************/
 
 #page_genre {
     display: flex; 
@@ -72,7 +114,17 @@ a:hover {
   
 .conteneur_genre {
     border: solid 1px black;
+    border-radius: 3px;
     width: 200PX;
     text-align: center;
+    padding: 10px;
   }
+
+.table_genre{
+    max-height: 15px;
+    margin-left: 20px;
+}
+.conteneur_genre li {
+    list-style: none;
+}
 

@@ -2,7 +2,7 @@
 
 <p class="compteur">Il y a <?= $requete->rowCount() ?> acteurs</p>
 
-<table>
+<table class="table_affichage">
     <thead>
         <tr>
             <th>Prénom</th>

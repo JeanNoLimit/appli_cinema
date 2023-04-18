@@ -11,7 +11,7 @@
             <?php }?>
         </ul>
     </div>
-    <table class="table_genre">
+    <table class="table_affichage table_genre">
     <thead>
         <tr>
             <th>Titre</th>
