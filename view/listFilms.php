@@ -1,7 +1,7 @@
 <!-- temporisation de sortie -->
 <?php ob_start();?>
 
-<p class="uk-label uk-label-warning">Il y a <?= $requete->rowCount() ?> films</p>
+<p class="compteur">Il y a <?= $requete->rowCount() ?> films</p>
 
 <table class="uk-table uk-table-striped">
     <thead>
@@ -27,7 +27,7 @@
 
 <?php
 
-$title="Liste des films";
+$titre="Liste des films";
 $titre_secondaire="Liste des films";
 $contenu = ob_get_clean();
 // injecte le contenu dans le template "squelette" ->template.php

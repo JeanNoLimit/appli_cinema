@@ -20,9 +20,9 @@
                         <a href="#" class="deroulant">Filtrer affichages  <span class="material-symbols-outlined">arrow_drop_down</span></a>
                         <ul>
                             <li><a href="#">Par genres</a></li>
-                            <li><a href="#">Par réalisateurs</a></li>
-                            <li><a href="#">Par acteurs</a></li>
                             <li><a href="#">Par rôle</a></li>
+                            <li><a href="#">Liste des réalisateurs</a></li>
+                            <li><a href="http://localhost/appli-cinema/appli_cinema/index.php?action=listActeurs">Liste des acteurs</a></li>                            
                         </ul>
                     </li>
                     <li>

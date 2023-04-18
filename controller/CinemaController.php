@@ -17,4 +17,16 @@ class CinemaController {
         ');
         require "view/listFilms.php";
     }
+
+    //Méthode pour lister les acteurs et leurs films associés
+
+    public function listActeurs() {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query('SELECT nom, prenom
+                                FROM personne p
+                                INNER JOIN acteur a ON p.id_personne=a.id_personne
+                                ORDER BY nom, prenom;
+        ');
+        require "view/listActeurs.php";
+    }
 }

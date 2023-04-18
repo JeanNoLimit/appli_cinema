@@ -21,8 +21,7 @@ if(!isset($_GET["action"])){
 }
 // En fonction de l'action détectée dans l'URL via la propriété "action" on interagit avec la bonne méthode du controller
 // (Pour rappel :isset — Détermine si une variable est déclarée et est différente de null)
-
-if(isset($_GET["action"])){
+elseif(isset($_GET["action"])){
     switch($_GET["action"]) {
         case "listFilms" : $ctrlCinema->listFilms(); break;
         case "listActeurs" : $ctrlCinema->listActeurs(); break;
