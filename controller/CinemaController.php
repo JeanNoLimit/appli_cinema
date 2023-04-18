@@ -18,7 +18,7 @@ class CinemaController {
         require "view/listFilms.php";
     }
 
-    //Méthode pour lister les acteurs et leurs films associés
+    //Méthode pour lister les acteurs
 
     public function listActeurs() {
         $pdo = Connect::seConnecter();
@@ -29,6 +29,7 @@ class CinemaController {
         ');
         require "view/listActeurs.php";
     }
+    //Méthode pour lister les réalisateurs
 
     public function listRealisateurs() {
         $pdo = Connect::seConnecter();
@@ -39,4 +40,18 @@ class CinemaController {
         );
         require "view/listRealisateurs.php";
     }
+
+    //Méthode pour lister les genres
+
+        public function listGenres() {
+            $pdo = Connect::seConnecter();
+            $requete = $pdo->query('SELECT libelle_genre AS genre, COUNT(id_film) AS filmParGenre
+                                    FROM  genre g
+                                    LEFT JOIN posseder p ON g.id_genre=p.id_genre
+                                    GROUP BY libelle_genre
+                                    ORDER BY filmParGenre DESC;'
+            );
+            require "view/parGenres.php";
+        }
+    
 }

@@ -63,4 +63,15 @@ a:hover {
     background-color: #808080;
 }
 
+
+/***** PAGE GENRE ********/
+
+#page_genre {
+    display: flex; 
+}
   
+.conteneur_genre {
+    border: solid 1px black;
+    width: 200PX;
+    text-align: center;
+  }
