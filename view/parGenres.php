@@ -11,8 +11,8 @@
             <?php }?>
         </ul>
     </div>
-    <!-- Affichage du tableau uniquement si un genre a été selectionné -->
-    <?php if(isset($_GET["id"])){?>
+    
+    <?php if(isset($_GET["id"])){?> <!-- Affichage du tableau uniquement si un genre a été selectionné -->
     <table class="table_affichage table_genre">
     <thead>
         <tr>

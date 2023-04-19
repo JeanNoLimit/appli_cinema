@@ -3,7 +3,7 @@
 
 <?php
 
-// On "use le contrôleur cinema. Permet d'inporter le controller
+// On "use" le contrôleur cinema. Permet d'inporter le controller
 // https://www.php.net/manual/fr/language.namespaces.importing.php
 use Controller\CinemaController;
 
@@ -29,6 +29,6 @@ elseif(isset($_GET["action"])){
         case "listActeurs" : $ctrlCinema->listActeurs(); break;
         case "listRealisateurs" : $ctrlCinema->listRealisateurs(); break;
         case "listGenres" : $ctrlCinema->listGenres($id); break; //affichage de la page "par genre"
-
+        case "detailFilm" : $ctrlCinema->detailFilm($id); break;
     }
 }
