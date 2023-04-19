@@ -11,6 +11,7 @@
             <?php }?>
         </ul>
     </div>
+    <?php if(isset($_GET["id"])){?>
     <table class="table_affichage table_genre">
     <thead>
         <tr>
@@ -18,14 +19,13 @@
             <th>Année de sortie</th>
         </tr>
     </thead>
-    <tbody>
-        <?php
-            foreach($requete_liste->fetchAll() as $film) {?>
+    <tbody><?php };?>
+           <?php foreach($requete_liste->fetchAll() as $film) {?>
                 <tr>
                     <td> <?= $film['titre'] ?></td>
                     <td> <?= $film['anne_sortie'] ?></td>
                 </tr>
-        <?php } ?>
+        <?php }; ?>
     </tbody>
 </table>
 </div>
