@@ -1,6 +1,6 @@
 <?php ob_start();?>
 
-<p class="compteur">Il y a <?= $requete_genre->rowCount() ?> genres</p>
+
 
 <div id="page_genre">
     <div class="conteneur_genre">
@@ -11,6 +11,7 @@
             <?php }?>
         </ul>
     </div>
+    <!-- Affichage du tableau uniquement si un genre a été selectionné -->
     <?php if(isset($_GET["id"])){?>
     <table class="table_affichage table_genre">
     <thead>
