@@ -37,7 +37,7 @@ ORDER BY nbFilm DESC;
 
 -- f.	Casting d’un film en particulier (id_film) : nom, prénom des acteurs + sexe
 
-SELECT titre,nom, prenom, sexe
+SELECT id_film, titre, nom, prenom, sexe
 FROM jouer j
 INNER JOIN film f ON j.id_film=f.id_film
 INNER JOIN acteur a ON j.id_acteur=a.id_acteur
