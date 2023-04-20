@@ -23,7 +23,7 @@
     <tbody><?php };?>
            <?php foreach($requete_liste->fetchAll() as $film) {?>
                 <tr>
-                    <td> <?= $film['titre'] ?></td>
+                    <td><a href="index.php?action=detailFilm&id=<?=$film['id_film']?>"> <?= $film['titre'] ?> </a></td>
                     <td> <?= $film['anne_sortie'] ?></td>
                 </tr>
         <?php }; ?>

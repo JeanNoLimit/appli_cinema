@@ -52,7 +52,7 @@ class CinemaController {
                                         ORDER BY filmParGenre DESC;'
         );
     
-        $requete_liste = $pdo->prepare('SELECT titre, DATE_FORMAT(date_sortie, "%Y") AS anne_sortie
+        $requete_liste = $pdo->prepare('SELECT f.id_film, titre, DATE_FORMAT(date_sortie, "%Y") AS anne_sortie
                                             FROM film f
                                             INNER JOIN posseder p ON f.id_film=p.id_film
                                             INNER JOIN genre g ON p.id_genre=g.id_genre
@@ -61,7 +61,7 @@ class CinemaController {
         require "view/parGenres.php";
     }
 
-
+    //Méthodes pour afficher le détail des films et leurs casting
     public function detailFilm($id) {
         $pdo = Connect::seConnecter();
         $requete_film= $pdo->prepare('SELECT affiche, note,libelle_genre, f.id_film, titre, nom, prenom, DATE_FORMAT(date_sortie, "%d/%m/%Y") AS date_sortie, TIME_FORMAT(SEC_TO_TIME(duree*60),"%H h %i") AS duree
