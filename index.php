@@ -30,5 +30,6 @@ elseif(isset($_GET["action"])){
         case "listRealisateurs" : $ctrlCinema->listRealisateurs(); break;
         case "listGenres" : $ctrlCinema->listGenres($id); break; //affichage de la page "par genre"
         case "detailFilm" : $ctrlCinema->detailFilm($id); break;
+        case "detailReal" : $ctrlCinema->detailReal($id); break;
     }
 }

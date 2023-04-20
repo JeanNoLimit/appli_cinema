@@ -10,7 +10,7 @@ class CinemaController {
     public function listFilms() {
 
         $pdo = Connect::seConnecter();
-        $requete = $pdo->query('SELECT id_film, titre, nom, prenom, DATE_FORMAT(date_sortie, "%Y") AS anne_sortie, TIME_FORMAT(SEC_TO_TIME(duree*60),"%H h %i") AS duree
+        $requete = $pdo->query('SELECT id_film,f.id_realisateur, titre, nom, prenom, DATE_FORMAT(date_sortie, "%Y") AS anne_sortie, TIME_FORMAT(SEC_TO_TIME(duree*60),"%H h %i") AS duree
                                     FROM film f
                                     INNER JOIN realisateur r ON f.id_realisateur=r.id_realisateur
                                     INNER JOIN personne p ON p.id_personne=r.id_personne;
@@ -33,7 +33,7 @@ class CinemaController {
 
     public function listRealisateurs() {
         $pdo = Connect::seConnecter();
-        $requete = $pdo->query('SELECT nom, prenom
+        $requete = $pdo->query('SELECT nom, prenom, id_realisateur
                                     FROM personne p
                                     INNER JOIN realisateur r ON p.id_personne=r.id_personne
                                     ORDER BY nom, prenom;'        
@@ -62,6 +62,7 @@ class CinemaController {
     }
 
     //Méthodes pour afficher le détail des films et leurs casting
+
     public function detailFilm($id) {
         $pdo = Connect::seConnecter();
         $requete_film= $pdo->prepare('SELECT affiche, note,libelle_genre, f.id_film, titre, nom, prenom, DATE_FORMAT(date_sortie, "%d/%m/%Y") AS date_sortie, TIME_FORMAT(SEC_TO_TIME(duree*60),"%H h %i") AS duree
@@ -86,6 +87,18 @@ class CinemaController {
 
     }
 
+    //Méthodes pour afficher les informations détaillées d'un réalisateur et ainsi que sa filmographie
+
+    public function detailReal($id) {
+        $pdo = Connect::seConnecter();
+        $requete_infoReal = $pdo->prepare ('SELECT p.id_personne, id_realisateur, nom, prenom, sexe, DATE_FORMAT(date_naissance, "%d/%m/%Y") AS date_Nais
+                                                FROM personne p
+                                                INNER JOIN realisateur r ON r.id_personne=p.id_personne
+                                                WHERE id_realisateur= :id');
+        $requete_infoReal ->execute(["id" => $id]);
+        require "view/detailReal.php";
+
+    }
 
 
     

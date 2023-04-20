@@ -12,7 +12,7 @@
         <?php 
         foreach($requete->fetchAll() as $real){?>
             <tr>
-                <td><?= $real['prenom'] ?> <?= $real['nom'] ?></td>
+                <td><a href="index.php?action=detailReal&id=<?=$real['id_realisateur']?>"><?= $real['prenom'] ?> <?= $real['nom'] ?></a></td>
             </tr>
         <?php } ?>
     </tbody>

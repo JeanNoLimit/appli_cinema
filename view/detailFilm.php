@@ -40,9 +40,9 @@
 
 
 <?php
-
-$contenu=ob_get_clean();
-$titre="détail film";
+$titre=$film['titre'];
 $titre_secondaire="";
+$contenu=ob_get_clean();
+
 require "view/template.php";
 ?>
