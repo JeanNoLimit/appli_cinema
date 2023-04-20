@@ -158,16 +158,18 @@ table a:hover{
 }
 
 .affiche {
-
     height: 240px;
     width: 170px;
     border: solid 1px black;
 }
 
 .infos_film {
-
     text-align: center;
     width: 400px;
+}
 
+#titre_casting {
+    text-align: center;
+    margin: 20px 0;
 
 }

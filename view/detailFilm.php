@@ -17,8 +17,25 @@
     </div>
 </div>
 
-<h1>Casting</h1>
+<h1 id="titre_casting">Casting</h1>
 
+<table class="table_affichage">
+    <thead>
+        <tr>
+            <th>Acteur</th>
+            <th>Rôle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        foreach( $requete_casting->fetchAll() as $casting){?>
+            <tr>
+                <td><?= $casting['prenom'] ?> <?= $casting['nom'] ?></td>
+                <td><?= $casting['nom_role']?></td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
 
 
 
