@@ -5,16 +5,14 @@
 <table class="table_affichage">
     <thead>
         <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
+            <th>Prénom, Nom</th>
         </tr>
     </thead>
     <tbody>
         <?php 
         foreach($requete->fetchAll() as $real){?>
             <tr>
-                <td><?= $real['prenom'] ?></td>
-                <td><?= $real['nom'] ?></td>
+                <td><?= $real['prenom'] ?> <?= $real['nom'] ?></td>
             </tr>
         <?php } ?>
     </tbody>

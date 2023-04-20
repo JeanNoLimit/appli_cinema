@@ -5,16 +5,14 @@
 <table class="table_affichage">
     <thead>
         <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
+            <th>Prénom, Nom</th>
         </tr>
     </thead>
     <tbody>
         <?php
             foreach($requete->fetchAll() as $acteur) {?>
                     <tr>
-                        <td><?=$acteur['prenom']?></td>
-                        <td><?=$acteur['nom']?></td>
+                        <td><?=$acteur['prenom']?> <?=$acteur['nom']?></td>
                     </tr>       
       <?php  } ?>
     </tbody>
