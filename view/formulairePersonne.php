@@ -41,16 +41,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <?php
 $titre="Formulaire Réalisateur/Acteur";
 $titre_secondaire="Formulaire de saisie nouveau Acteur/Réalisateur";
