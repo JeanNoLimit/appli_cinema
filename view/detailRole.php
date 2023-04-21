@@ -16,9 +16,9 @@
     <tbody>
         <?php foreach($requete_listRole->fetchAll() as $listRole){?>
             <tr>
-                <td><?=$listRole['titre'] ?></td>
+                <td><a href="index.php?action=detailFilm&id=<?=$listRole['id_film']?>"><?=$listRole['titre'] ?></a></td>
                 <td><?=$listRole['annee_sortie']?></td>
-                <td><?=$listRole['prenom'].' '.$listRole['nom']?></td>
+                <td><a href="index.php?action=detailActeur&id=<?=$listRole['id_acteur']?>"><?=$listRole['prenom'].' '.$listRole['nom']?></a></td>
             </tr>
         <?php } ?>
     </tbody>

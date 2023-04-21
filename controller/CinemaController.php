@@ -140,7 +140,7 @@ class CinemaController {
         $requete_infoRole-> execute(["id" => $id]);
         
 
-        $requete_listRole = $pdo->prepare ('SELECT f.id_film, titre, DATE_FORMAT(date_sortie, "%Y") AS annee_sortie, prenom, nom
+        $requete_listRole = $pdo->prepare ('SELECT f.id_film, a.id_acteur, titre, DATE_FORMAT(date_sortie, "%Y") AS annee_sortie, prenom, nom
                                             FROM role r
                                             INNER JOIN jouer j ON r.id_role=j.id_role
                                             INNER JOIN acteur a ON j.id_acteur=a.id_acteur
