@@ -156,5 +156,9 @@ class CinemaController {
     public function formulairePersonne(){
         require "view/formulairePersonne.php";
     }
+
+    public function formulaireFilm(){
+        require "view/formulaireFilm.php";
+    }
     
 }
