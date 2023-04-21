@@ -18,9 +18,9 @@
     </thead>
     <tbody>
         <?php
-            foreach($requete_filmoReal as $filmographie){ ?>
+            foreach($requete_filmoReal->fetchAll() as $filmographie){ ?>
                 <tr>
-                    <td><?= $filmographie['titre']?></td>
+                    <td><a href="index.php?action=detailFilm&id=<?=$filmographie['id_film']?>"><?= $filmographie['titre']?></td>
                     <td><?=$filmographie['annee_sortie']?></td>
                     <td><?=$filmographie['genres']?></td>
                     <td><?=$filmographie['note']?> /5</td>
