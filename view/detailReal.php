@@ -7,7 +7,27 @@
     <?php }; ?>
     <h3>Réalisateur/Réalisatrice</h3>
 </div>
-
+<table class="table_affichage">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Année</th>
+            <th>Genre(s)</th>
+            <th>note</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+            foreach($requete_filmoReal as $filmographie){ ?>
+                <tr>
+                    <td><?= $filmographie['titre']?></td>
+                    <td><?=$filmographie['annee_sortie']?></td>
+                    <td><?=$filmographie['genres']?></td>
+                    <td><?=$filmographie['note']?> /5</td>
+                </tr>
+        <?php } ?>
+    </tbody>
+</table>
 
 
 

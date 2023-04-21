@@ -142,7 +142,7 @@ table a:hover{
 
 
 .conteneur_film {
-    border: solid 1px black;
+    
     background-color: #e6e6e6;
     border-radius: 3px;
     display: flex;
@@ -178,12 +178,13 @@ table a:hover{
 /****************** PAGE détail Réalisateur************************/
 
 .conteneur_infos{
-    border: solid 1px black;
+
     border-radius: 3px;
     max-width: 600px;
     background-color: #e6e6e6;
-    margin: auto;
+    margin: 40px auto;
     text-align: center;
     padding: 30px;
     box-shadow: 5px 5px 5px #808080;
+    
 }

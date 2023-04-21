@@ -8,7 +8,7 @@
             <h2><?=$film['titre']?></h2>
         <div class="details_film">       
             <p>Date de sortie : <?=$film['date_sortie']?></p>
-            <p>genre : <?=$film['libelle_genre']?> </p>
+            <p>genre : <?=$film['genres']?> </p>
             <p>Durée : <?=$film['duree']?> </p>
             <p>Réalisateur : <a href="index.php?action=detailReal&id=<?=$film['id_realisateur']?>"><?=$film['prenom']?> <?=$film['nom']?></a> </p>
             <p>Note : <?=$film['note']?> /5</p>
