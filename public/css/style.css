@@ -188,3 +188,22 @@ table a:hover{
     box-shadow: 5px 5px 5px #808080;
     
 }
+
+
+/****************** PAGE Formulaire Métier************************/
+
+.formulaire{ 
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    border: solid 1px black;
+    border-radius: 50px;
+    max-width: 300px;
+    margin-top: 40px;
+}
+
+.formulaire div{
+    padding: 5px;
+}
