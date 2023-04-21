@@ -30,7 +30,7 @@
         <?php 
         foreach( $requete_casting->fetchAll() as $casting){?>
             <tr>
-                <td><?= $casting['prenom'] ?> <?= $casting['nom'] ?></td>
+                <td><a href="index.php?action=detailActeur&id=<?=$casting['id_acteur']?>"><?= $casting['prenom'] ?> <?= $casting['nom'] ?></a></td>
                 <td><?= $casting['nom_role']?></td>
             </tr>
         <?php } ?>

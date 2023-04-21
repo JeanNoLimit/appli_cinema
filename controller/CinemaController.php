@@ -77,7 +77,7 @@ class CinemaController {
         ');
         $requete_film ->execute(["id" => $id]);
 
-        $requete_casting = $pdo->prepare('SELECT f.id_film, nom, prenom, nom_role
+        $requete_casting = $pdo->prepare('SELECT f.id_film, nom, prenom, nom_role, a.id_acteur, r.id_role
                                             FROM jouer j
                                             INNER JOIN film f ON j.id_film=f.id_film
                                             INNER JOIN acteur a ON j.id_acteur=a.id_acteur
@@ -98,7 +98,7 @@ class CinemaController {
                                                 INNER JOIN realisateur r ON r.id_personne=p.id_personne
                                                 WHERE id_realisateur= :id');
         $requete_infoReal ->execute(["id" => $id]);
-
+                    //Concaténation des genres en une chaîne de caractères afin de les afficher tous si un film en contient plusieurs. https://sql.sh/fonctions/group_concat
         $requete_filmoReal = $pdo->prepare ('SELECT f.id_film, f.id_realisateur, titre, DATE_FORMAT(date_sortie, "%Y") AS annee_sortie, GROUP_CONCAT(libelle_genre) AS genres, note
                                                 FROM film f
                                                 INNER JOIN realisateur r ON r.id_realisateur=f.id_realisateur
@@ -111,7 +111,7 @@ class CinemaController {
         require "view/detailReal.php";
 
     }
-
+    //Méthodes pour afficher les informations d'un acteur ainsi que sa filmographie
     public function detailActeur($id) {
         $pdo = Connect::seConnecter();
         $requete_infoActeur = $pdo->prepare ('SELECT p.id_personne, id_acteur, nom, prenom, sexe, DATE_FORMAT(date_naissance, "%d/%m/%Y") AS date_Nais
