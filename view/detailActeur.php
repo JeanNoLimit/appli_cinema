@@ -21,7 +21,7 @@
             foreach($requete_filmoActeur->fetchAll() as $filmographie){ ?>
                 <tr>
                     <td><a href="index.php?action=detailFilm&id=<?=$filmographie['id_film']?>"><?= $filmographie['titre']?></td>
-                    <td><?=$filmographie['nom_role']?></td>
+                    <td><a href="index.php?action=detailRole&id=<?=$filmographie['id_role']?>"><?=$filmographie['nom_role']?></a></td>
                     <td><?=$filmographie['annee_sortie']?></td>
                     <td><?=$filmographie['note']?> /5</td>
                 </tr>

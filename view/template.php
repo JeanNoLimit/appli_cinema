@@ -20,7 +20,6 @@
                         <a href="#" class="deroulant">Filtrer affichages  <span class="material-symbols-outlined">arrow_drop_down</span></a>
                         <ul>
                             <li><a href="/appli_cinema/index.php?action=listGenres">Par genres</a></li>
-                            <!-- <li><a href="http://localhost/appli-cinema/appli_cinema/index.php?action=listRole">Par rôle</a></li> -->
                             <li><a href="/appli_cinema/index.php?action=listRealisateurs">Liste des réalisateurs</a></li>
                             <li><a href="/appli_cinema/index.php?action=listActeurs">Liste des acteurs</a></li>                            
                         </ul>

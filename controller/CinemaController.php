@@ -131,5 +131,26 @@ class CinemaController {
         $requete_filmoActeur -> execute(["id" => $id]);
         require "view/detailActeur.php";
     }
+
+    public function detailRole($id) {
+        $pdo = Connect::seConnecter();
+        $requete_infoRole = $pdo->prepare ('SELECT nom_role, id_role
+                                            FROM role
+                                            WHERE id_role= :id');
+        $requete_infoRole-> execute(["id" => $id]);
+        
+
+        $requete_listRole = $pdo->prepare ('SELECT f.id_film, titre, DATE_FORMAT(date_sortie, "%Y") AS annee_sortie, prenom, nom
+                                            FROM role r
+                                            INNER JOIN jouer j ON r.id_role=j.id_role
+                                            INNER JOIN acteur a ON j.id_acteur=a.id_acteur
+                                            INNER JOIN personne p ON p.id_personne=a.id_personne
+                                            INNER JOIN film f ON j.id_film=f.id_film
+                                            WHERE r.id_role= :id 
+                                            ORDER BY annee_sortie DESC;');
+        $requete_listRole -> execute(["id" => $id]);
+
+        require "view/detailRole.php";
+    }
     
 }
