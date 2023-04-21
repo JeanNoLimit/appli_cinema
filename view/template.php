@@ -27,7 +27,7 @@
                     <li>
                         <a href="#" class="deroulant">Formulaires  <span class="material-symbols-outlined">arrow_drop_down</span></a>
                         <ul>
-                            <li><a href="#">Nouveau Réalisateur/acteur</a></li>
+                            <li><a href="/appli_cinema/index.php?action=formulairePersonne">Nouveau Réalisateur/acteur</a></li>
                             <li><a href="#">Nouveau film</a></li>
                             <li><a href="#">Nouveau rôle</a></li>
                             <li><a href="#">Nouveau casting</a></li>
