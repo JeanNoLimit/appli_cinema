@@ -114,14 +114,14 @@ table a:hover{
 }
 
 
-/****************** PAGE GENRE ************************/
+/****************** Vue GENRE ************************/
 
 #page_genre {
     display: flex; 
 }
   
 .conteneur_genre {
-    border: solid 1px black;
+
     border-radius: 3px;
     width: 200PX;
     text-align: center;
@@ -138,7 +138,7 @@ table a:hover{
     list-style: none;
 }
 
-/****************** PAGE détail film ************************/
+/****************** Vue détail film ************************/
 
 
 .conteneur_film {
@@ -175,7 +175,7 @@ table a:hover{
     margin: 20px 0;
 }
 
-/****************** PAGE détail Réalisateur************************/
+/****************** Vue détail Réalisateur************************/
 
 .conteneur_infos{
 
@@ -190,7 +190,7 @@ table a:hover{
 }
 
 
-/****************** PAGE Formulaire Métier************************/
+/****************** Vue Formulaires ************************/
 
 .formulaire{ 
     margin: auto;
@@ -200,10 +200,30 @@ table a:hover{
     padding: 20px;
     border: solid 1px black;
     border-radius: 50px;
-    max-width: 300px;
+    max-width: 400px;
     margin-top: 40px;
 }
 
 .formulaire div{
     padding: 5px;
+}
+
+.info_complementaire{
+    font-style: italic;
+    font-size: 0.8em ;
+    color:#808080;
+
+}
+/* taille zone de saisie de la durée et note */
+.form_num{
+    width:4em;
+}
+
+
+.label {
+    font-weight: 600;
+}
+
+button {
+    margin-top: 30px;
 }

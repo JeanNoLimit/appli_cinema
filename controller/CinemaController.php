@@ -149,7 +149,6 @@ class CinemaController {
                                             WHERE r.id_role= :id 
                                             ORDER BY annee_sortie DESC;');
         $requete_listRole -> execute(["id" => $id]);
-
         require "view/detailRole.php";
     }
 
@@ -158,6 +157,14 @@ class CinemaController {
     }
 
     public function formulaireFilm(){
+        $pdo = Connect::seConnecter();
+        $requete_genre = $pdo->query('SELECT g.id_genre AS id, libelle_genre
+                                        FROM  genre g
+                                        ORDER BY libelle_genre');
+        $requete_real = $pdo->query('SELECT nom, prenom, id_realisateur
+                                        FROM personne p
+                                        INNER JOIN realisateur r ON p.id_personne=r.id_personne
+                                        ORDER BY nom, prenom;');
         require "view/formulaireFilm.php";
     }
     
