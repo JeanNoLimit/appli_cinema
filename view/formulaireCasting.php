@@ -1,0 +1,43 @@
+<?php ob_start(); ?>
+
+<div class="formulaire">
+    <form action="" method="get">
+    <!-- Liste des films -->
+    <div>
+        <label for="film" class="label">Film : </label>
+            <select name="id_film" id="film">
+                <?php foreach($requete_film->fetchAll() as $film){?>
+                    <option value="<?=$film['id_film']?>"><?=$film['titre']?></option>
+                <?php } ?>
+            </select>      
+    </div>
+    <!-- Liste des acteurs  -->
+    <div>
+        <label for="acteur" class="label">Acteur/Actrice : </label>
+            <select name="id_acteur" id="acteur">
+                <?php foreach($requete_acteur->fetchAll() as $acteur){?>
+                    <option value="<?=$acteur['id_acteur']?>"><?=$acteur['prenom']?> <?=$acteur['nom']?></option>
+                <?php } ?>
+            </select>      
+    </div>
+
+    <div>
+        <label for="role" class="label">Role : </label>
+            <select name="id_role" id="role">
+                <?php foreach($requete_role->fetchAll() as $role){?>
+                    <option value="<?=$role['id_role']?>"><?=$role['nom_role']?></option>
+                <?php } ?>
+            </select>      
+    </div>
+
+       <button type="submit" name="submit">Envoyer</button>
+
+    </form>
+</div>
+
+<?php
+$titre="Formulaire Casting";
+$titre_secondaire="";
+$contenu=ob_get_clean();
+require "view/template.php";
+?>

@@ -36,5 +36,6 @@ elseif(isset($_GET["action"])){
         case "formulairePersonne" : $ctrlCinema->formulairePersonne(); break;
         case "formulaireFilm" : $ctrlCinema->formulaireFilm(); break;
         case "formulaireRole" : $ctrlCinema->formulaireRole();break;
+        case "forumlaireCasting" : $ctrlCinema->formulaireCasting();break;
     }
 }

@@ -5,6 +5,8 @@ use Model\Connect;
 
 class CinemaController {
 
+
+
     // Méthode pour lister les films
 
     public function listFilms() {
@@ -171,5 +173,24 @@ class CinemaController {
     
     public function formulaireRole(){
         require "view/formulaireRole.php";
+    }
+
+    public function formulaireCasting(){
+        // On récupère la liste des films
+        $pdo = Connect::seConnecter();
+        $requete_film = $pdo->query('SELECT id_film, titre
+                                        FROM film f');
+    
+        //On récupère la liste des rôles
+        $requete_role = $pdo->query('SELECT nom_role, id_role
+                                        FROM role');
+
+        //On récupère la liste des acteurs
+        $requete_acteur = $pdo->query('SELECT id_acteur, nom, prenom
+                                        FROM personne p
+                                        INNER JOIN acteur a ON p.id_personne=a.id_personne');
+                                        
+        require "view/formulaireCasting.php";
+
     }
 }
