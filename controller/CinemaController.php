@@ -131,7 +131,7 @@ class CinemaController {
         $requete_filmoActeur -> execute(["id" => $id]);
         require "view/detailActeur.php";
     }
-
+    // Méthodes pour afficher le détail d'un rôle, la liste des films où le personnage apparait et la liste des acteurs qui l'ont interprété
     public function detailRole($id) {
         $pdo = Connect::seConnecter();
         $requete_infoRole = $pdo->prepare ('SELECT nom_role, id_role
@@ -151,6 +151,7 @@ class CinemaController {
         $requete_listRole -> execute(["id" => $id]);
         require "view/detailRole.php";
     }
+// VUES FORMULAIRES
 
     public function formulairePersonne(){
         require "view/formulairePersonne.php";
@@ -168,4 +169,7 @@ class CinemaController {
         require "view/formulaireFilm.php";
     }
     
+    public function formulaireRole(){
+        require "view/formulaireRole.php";
+    }
 }

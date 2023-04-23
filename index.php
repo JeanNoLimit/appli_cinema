@@ -35,5 +35,6 @@ elseif(isset($_GET["action"])){
         case "detailRole" : $ctrlCinema->detailRole($id); break;
         case "formulairePersonne" : $ctrlCinema->formulairePersonne(); break;
         case "formulaireFilm" : $ctrlCinema->formulaireFilm(); break;
+        case "formulaireRole" : $ctrlCinema->formulaireRole();break;
     }
 }
