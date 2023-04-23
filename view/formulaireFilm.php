@@ -1,6 +1,7 @@
 <?php ob_start()?>
 
 <div class="formulaire">
+    <h3>Formulaire de saisie : <br> Nouveau film </h3>
     <form action="" method="post">
 
         <div>
