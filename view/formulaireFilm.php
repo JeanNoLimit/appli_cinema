@@ -12,7 +12,7 @@
 
         <div>
             <label for="genre" class="label">genres : </label>
-            <select name="genre" id="id_genre" multiple size="3">
+            <select name="id_genre" id="genre" multiple size="3">
                 <?php foreach($requete_genre->fetchAll() as $genre){?>
                         <option value="<?=$genre['id']?>"><?=$genre['libelle_genre'] ?></option>
                 <?php } ?>
@@ -32,7 +32,7 @@
         </div>
         <div>
             <label for="realisateur" class="label">Réalisateur : </label>
-                <select name="realisateur" id="id_realisateur">
+                <select name="id_realisateur" id="realisateur">
                     <?php foreach($requete_real->fetchAll() as $real){?>
                         <option value="<?=$real['id_realisateur']?>"><?=$real['prenom']?> <?=$real['nom']?></option>
                     <?php } ?>

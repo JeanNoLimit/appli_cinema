@@ -10,7 +10,7 @@
 
         <div>
             <label for="prenom" class="label">Prénom :</label>
-                <input type="text" name="nom" id="nom" maxlength="30">
+                <input type="text" name="prenom" id="prenom" maxlength="30">
         </div>
 
         <div>
@@ -29,9 +29,9 @@
         
         <div>
             <p class="label">Métier(s) : </p>
-            <input type="checkbox" name="metier" id="realisateur">
+            <input type="checkbox" name="realisateur" id="realisateur">
                 <label for="realisateur">réalisateur</label>
-            <input type="checkbox" name="metier" id="acteur">
+            <input type="checkbox" name="acteur" id="acteur">
                 <label for="acteur">acteur</label>
         </div>
         
