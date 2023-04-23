@@ -11,7 +11,9 @@
 <body>
     <header>
         <nav>
+           
             <div id="wrap">
+                <img src="/appli_cinema/public/img/logo_cinema.png" alt="logo cinéma" class="logo">
                 <ul class="navbar">
                     <li>
                         <a href="/appli_cinema/index.php?action=listFilms">Acceuil</a>
