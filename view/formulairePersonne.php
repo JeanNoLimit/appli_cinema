@@ -2,7 +2,7 @@
 
 <div class="formulaire">
     <h3>Formulaire de saisie : <br> Nouveau réalisateur/acteur </h3>
-    <form action="index.php?action=ajoutPersonne" method="post">
+    <form action="index.php?action=formulairePersonne" method="post">
         <div>
             <label for="nom" class="label">Nom : </label>
                 <input type="text" name="nom" id="nom" maxlength="30">            
