@@ -99,12 +99,21 @@ class FilmController {
             if($titre && $id_genres && $date_sortie && $duree && $id_realisateur){
                
                 $pdo= Connect::seConnecter();
-
+                // Requête pour insérer les données dans la table film
                 $requete_film = $pdo ->prepare('INSERT INTO film(titre, date_sortie, duree, note, id_realisateur)
                                                      VALUES (:titre, :date_sortie, :duree, :note, :id_realisateur)');
                 $requete_film->execute(['titre' => $titre, 'date_sortie' => $date_sortie, 'duree' => $duree, 'note' => $note,'id_realisateur' => $id_realisateur]);
 
-                
+                // On récupère l'identifiant du film créée
+                $film_id = $pdo->lastInsertId();
+
+                // Requête pour insérer les données dans la table posséder qui lie la table genre à film
+                foreach($id_genres as $genre){
+                    $req_genre =$pdo -> prepare('INSERT INTO posseder (id_genre, id_film)
+                                                    VALUES ( :id_genre, :id_film) ');
+                    $req_genre ->execute (['id_genre'=> $genre, 'id_film' => $film_id]);
+
+                }
             }
         
         
