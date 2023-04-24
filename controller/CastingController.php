@@ -31,27 +31,27 @@ class CastingController {
     //VUES FORMULAIRES
         //Formulaire rôle
     public function formulaireRole(){
-        // Si la vairable $_POST exsite
+        // Si la variable $_POST exsite
         if(isset($_POST['submitRole'])){
-            // On filtre 
+            // On filtre la varialbe nom_role pour remplacer les caractères spéciaux (p.e. < ou >) en entités HTML pour éviter l'insersion de code 
             $nom_role = filter_input(INPUT_POST,"nom_role",FILTER_SANITIZE_SPECIAL_CHARS );
-
+            //Si "nom_role" a passé le test et que la variable $nom_role renvoie un résultat :
             if($nom_role){
-
+                //Connection à la bd.
                 $pdo = Connect::seConnecter();
+                //Préparer la requête permet de prévenir les attaques par injection SQL en éliminant le besoin de protéger les paramètres manuellement.https://www.php.net/manual/fr/pdo.prepare.php
                 $req = $pdo ->prepare("INSERT INTO role (nom_role)
                                         VALUES (:nom_role)");
-                
+                // les "doubles-points" : signifient qu'on appelle une variable hôte (variable du language hôte -> php)
                 $req->execute(["nom_role" => $nom_role]);
+
+
+                
             }
 
         }
         require "view/formulaireRole.php";
     }
-
-
-
-
 
 
 
