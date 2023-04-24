@@ -14,7 +14,8 @@ class FilmController {
         $requete = $pdo->query('SELECT id_film,f.id_realisateur, titre, nom, prenom, DATE_FORMAT(date_sortie, "%Y") AS anne_sortie, TIME_FORMAT(SEC_TO_TIME(duree*60),"%H h %i") AS duree
                                     FROM film f
                                     INNER JOIN realisateur r ON f.id_realisateur=r.id_realisateur
-                                    INNER JOIN personne p ON p.id_personne=r.id_personne;
+                                    INNER JOIN personne p ON p.id_personne=r.id_personne
+                                    ORDER BY titre;
         ');
         require "view/listFilms.php";
     }
@@ -34,7 +35,8 @@ class FilmController {
                                             FROM film f
                                             INNER JOIN posseder p ON f.id_film=p.id_film
                                             INNER JOIN genre g ON p.id_genre=g.id_genre
-                                            WHERE g.id_genre= :id');
+                                            WHERE g.id_genre= :id
+                                            ORDER BY titre');
         $requete_liste ->execute(["id" => $id]);
         require "view/parGenres.php";
     }
