@@ -37,10 +37,10 @@ elseif(isset($_GET["action"])){
         case "detailFilm" : $ctrlFilm->detailFilm($id); break;
         case "detailReal" : $ctrlPers->detailReal($id); break;
         case "detailActeur" : $ctrlPers->detailActeur($id); break;
-        case "detailRole" : $ctrlcasting->detailRole($id); break;    
+        case "detailRole" : $ctrlCasting->detailRole($id); break;    
         case "formulaireFilm" : $ctrlFilm->formulaireFilm(); break;
         case "formulaireRole" : $ctrlCasting->formulaireRole();break;
         case "forumlaireCasting" : $ctrlCasting->formulaireCasting();break;
-        case "ajoutPersonne" : $ctrlPers->formulairePersonne(); break;
+        case "formulairePersonne" : $ctrlPers->formulairePersonne(); break;
     }
 }
