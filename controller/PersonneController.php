@@ -74,6 +74,19 @@ class PersonneController {
     // VUES FORMULAIRES
         //FORMULAIRE PERSONNE -> REALISATEUR/ACTEUR
     public function formulairePersonne(){
+
+            if(isset($_POST['submitPers'])){
+                var_dump($_POST); die;
+                $nom = filter_input(INPUT_POST,"nom",FILTER_SANITIZE_SPECIAL_CHARS );
+                $prenom = filter_input(INPUT_POST,"prenom",FILTER_SANITIZE_SPECIAL_CHARS );
+                $date_naissance = filter_input(INPUT_POST,"date_naissance",FILTER_SANITIZE_SPECIAL_CHARS);
+                $sexe = filter_input(INPUT_POST,"sexe",FILTER_SANITIZE_SPECIAL_CHARS );
+                $metier = filter_input_array(INPUT_POST,"metier", FILTER_SANITIZE_SPECIAL_CHARS );
+
+            }
+
+
+    
         require "view/formulairePersonne.php";
     }
 

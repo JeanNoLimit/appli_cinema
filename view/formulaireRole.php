@@ -3,7 +3,7 @@
 
 <div class="formulaire">
     <h3>Formulaire de saisie : <br> Nouveau rôle </h3>
-    <form action="" method="post">
+    <form action="index.php?action=formulaireRole" method="post">
 
         <div>
             <label for="role" class="label">Nom du rôle : 
@@ -11,7 +11,7 @@
             </label>
         </div>
 
-       <button type="submit" name="submit">Envoyer</button>
+       <input type="submit" value="Envoyer" name="submitRole">
 
     </form>
 </div>

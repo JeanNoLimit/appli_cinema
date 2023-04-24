@@ -2,7 +2,7 @@
 
 <div class="formulaire">
     <h3>Formulaire de saisie : <br> Nouveau réalisateur/acteur </h3>
-    <form action="#" method="post">
+    <form action="index.php?action=ajoutPersonne" method="post">
         <div>
             <label for="nom" class="label">Nom : </label>
                 <input type="text" name="nom" id="nom" maxlength="30">            
@@ -29,13 +29,13 @@
         
         <div>
             <p class="label">Métier(s) : </p>
-            <input type="checkbox" name="realisateur" id="realisateur">
+            <input type="checkbox" name="metier[]" id="realisateur" value="realisateur">
                 <label for="realisateur">réalisateur</label>
-            <input type="checkbox" name="acteur" id="acteur">
+            <input type="checkbox" name="metier[]" id="acteur" value="acteur">
                 <label for="acteur">acteur</label>
         </div>
         
-        <button type="submit" name="submit">Envoyer</button>
+        <input type="submit" name="submitPers" value="Ajouter" />
     </form>
 </div>
 

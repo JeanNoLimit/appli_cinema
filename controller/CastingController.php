@@ -27,11 +27,35 @@ class CastingController {
         $requete_listRole -> execute(["id" => $id]);
         require "view/detailRole.php";
     }
+
     //VUES FORMULAIRES
         //Formulaire rôle
     public function formulaireRole(){
+        // Si la vairable $_POST exsite
+        if(isset($_POST['submitRole'])){
+            // On filtre 
+            $nom_role = filter_input(INPUT_POST,"nom_role",FILTER_SANITIZE_SPECIAL_CHARS );
+
+            if($nom_role){
+
+                $pdo = Connect::seConnecter();
+                $req = $pdo ->prepare("INSERT INTO role (nom_role)
+                                        VALUES (:nom_role)");
+                
+                $req->execute(["nom_role" => $nom_role]);
+            }
+
+        }
         require "view/formulaireRole.php";
     }
+
+
+
+
+
+
+
+
         //FORMULAIRE CASTING
     public function formulaireCasting(){
         // On récupère la liste des films
