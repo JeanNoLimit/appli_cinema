@@ -167,6 +167,13 @@ table a:hover{
     height: 240px;
     width: 170px;
     border: solid 1px black;
+   
+}
+
+.affiche img{
+    height: 240px;
+    width: 170px;
+     object-fit: contain;
 }
 
 .infos_film {

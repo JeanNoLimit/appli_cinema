@@ -2,9 +2,11 @@
 
 <div class="conteneur_film">
     <div class="affiche">
+    <?php $film=$requete_film->fetch(); {?>
+        <img src="upload/<?=$film['affiche']?>" alt="affiche du film <?=$film['titre']?>">
     </div>
     <div class ="infos_film">
-         <?php $film=$requete_film->fetch(); {?>
+         
             <h2><?=$film['titre']?></h2>
         <div class="details_film">       
             <p>Date de sortie : <?=$film['date_sortie']?></p>

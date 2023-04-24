@@ -2,7 +2,8 @@
 
 <div class="formulaire">
     <h3>Formulaire de saisie : <br> Nouveau film </h3>
-    <form action="index.php?action=formulaireFilm" method="post">
+    <!-- Pour pouvoir soumettre un formulaire avec un type file il faut rajouer l'attribut enctype="multipart/form-data" dans la balise form -->
+    <form action="index.php?action=formulaireFilm" method="post" enctype="multipart/form-data"> 
 
         <div>
             <label for="titre" class="label">Titre : 
@@ -39,11 +40,11 @@
                 </select>
             <p class="info_complementaire">Si le réalisateur n'apparait pas dans la liste veuillez remplir le formulaire d'ajout de réalisteur en <a href="index.php?action=formulairePersonne"> cliquant ici.</a></p>    
         </div>
-        <!--On supprime temporairement l'insersion de l'affiche lors de la création d'un nouveau film. A remettre plus tard -->
-        <!--<div>
-            <label for="affiche" class="label">Insérer une affiche : </label><span class="info_complementaire">(Optionnel)</span>
-                <input type="file" name="affiche" id="affiche" accept=".png, .jpeg, .jpg">
-        </div> --> 
+        
+        <div>
+            <label for="affiche" class="label">Insérer une affiche (1Mo. max) : </label><span class="info_complementaire">(Optionnel)</span>
+                <input type="file" name="affiche" id="affiche" accept=".png, .jpeg, .jpg, .gif">
+        </div> 
 
         <div>
             <label for="note" class="label">Note : </label><span class="info_complementaire">(Optionnel)</span>
