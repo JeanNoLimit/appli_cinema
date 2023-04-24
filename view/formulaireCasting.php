@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <div class="formulaire">
-    <form action="" method="get">
+    <form action="index.php?action=forumlaireCasting" method="post">
     <!-- Liste des films -->
     <div>
         <label for="film" class="label">Film : </label>
@@ -20,7 +20,7 @@
                 <?php } ?>
             </select>      
     </div>
-
+    <!-- Liste des rôles -->
     <div>
         <label for="role" class="label">Role : </label>
             <select name="id_role" id="role">
@@ -30,7 +30,7 @@
             </select>      
     </div>
 
-       <button type="submit" name="submit">Envoyer</button>
+       <input type="submit" value="Ajouter" name="submitCasting">
 
     </form>
 </div>

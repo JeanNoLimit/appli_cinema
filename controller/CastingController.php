@@ -29,6 +29,7 @@ class CastingController {
     }
 
     //VUES FORMULAIRES
+
         //Formulaire rôle
     public function formulaireRole(){
         // Si la variable $_POST exsite
@@ -53,9 +54,6 @@ class CastingController {
         require "view/formulaireRole.php";
     }
 
-
-
-
         //FORMULAIRE CASTING
     public function formulaireCasting(){
         // On récupère la liste des films
@@ -66,12 +64,33 @@ class CastingController {
     
         //On récupère la liste des rôles
         $requete_role = $pdo->query('SELECT nom_role, id_role
-                                        FROM role');
+                                        FROM role
+                                        ORDER BY nom_role');
 
         //On récupère la liste des acteurs
         $requete_acteur = $pdo->query('SELECT id_acteur, nom, prenom
                                         FROM personne p
-                                        INNER JOIN acteur a ON p.id_personne=a.id_personne');
+                                        INNER JOIN acteur a ON p.id_personne=a.id_personne
+                                        ORDER BY nom');
+
+        //Gestion de l'envoie du formulaire
+        if(isset($_POST['submitCasting'])){
+            
+            $id_film=filter_input(INPUT_POST, "id_film", FILTER_VALIDATE_INT );
+            $id_acteur=filter_input(INPUT_POST, "id_acteur", FILTER_VALIDATE_INT );
+            $id_role=filter_input(INPUT_POST, "id_role", FILTER_VALIDATE_INT );
+
+        if($id_film && $id_acteur && $id_role){
+                $pdo= Connect::seConnecter();
+            $requete_casting= $pdo->prepare('INSERT INTO jouer (id_film, id_acteur, id_role)
+                                                VALUES( :id_film, :id_acteur, :id_role)');
+            $requete_casting->execute(['id_film'=>$id_film, 'id_acteur'=>$id_acteur, 'id_role'=>$id_role]);
+        }
+        }
+
+
+
+
                                         
         require "view/formulaireCasting.php";
 
