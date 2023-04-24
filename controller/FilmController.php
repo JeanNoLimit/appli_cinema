@@ -72,6 +72,7 @@ class FilmController {
 
     public function formulaireFilm(){
         $pdo = Connect::seConnecter();
+        // On aura besoin d'uploader une image. Pour ce faire suivre le tuto : https://espritweb.fr/comment-uploader-une-image-en-php/
         $requete_genre = $pdo->query('SELECT g.id_genre AS id, libelle_genre
                                         FROM  genre g
                                         ORDER BY libelle_genre');
@@ -79,6 +80,44 @@ class FilmController {
                                         FROM personne p
                                         INNER JOIN realisateur r ON p.id_personne=r.id_personne
                                         ORDER BY nom, prenom;');
+
+        if(isset($_POST['submitFilm'])){
+           
+            $titre=filter_input(INPUT_POST, "titre", FILTER_SANITIZE_SPECIAL_CHARS);
+            // On obtient un tableau qui contient les id_genres
+            $id_genres=filter_input(INPUT_POST, "id_genres", FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+            $date_sortie=filter_input(INPUT_POST, "date_sortie", FILTER_SANITIZE_SPECIAL_CHARS);
+            $duree=filter_input(INPUT_POST, "duree", FILTER_VALIDATE_INT );
+            $id_realisateur=filter_input(INPUT_POST, "id_realisateur", FILTER_VALIDATE_INT );
+            if(isset($_POST['note']) && !empty($_POST['note'])){
+                $note=filter_input(INPUT_POST,"note", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION); //FILTER_FLAG_FRACTION est ajouté pour permettre l'utilisation du caractère , ou . pour la décimale
+            }else{
+                $note=null;
+            }
+            
+            
+            if($titre && $id_genres && $date_sortie && $duree && $id_realisateur){
+               
+                $pdo= Connect::seConnecter();
+
+                $requete_film = $pdo ->prepare('INSERT INTO film(titre, date_sortie, duree, note, id_realisateur)
+                                                     VALUES (:titre, :date_sortie, :duree, :note, :id_realisateur)');
+                $requete_film->execute(['titre' => $titre, 'date_sortie' => $date_sortie, 'duree' => $duree, 'note' => $note,'id_realisateur' => $id_realisateur]);
+
+                
+            }
+        
+        
+        
+        
+        
+        
+        
+        }
+
+
+
+
         require "view/formulaireFilm.php";
     }
 
