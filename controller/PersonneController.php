@@ -71,18 +71,44 @@ class PersonneController {
         require "view/detailActeur.php";
     }
 
-    // VUES FORMULAIRES
-        //FORMULAIRE PERSONNE -> REALISATEUR/ACTEUR
+    // VUES FORMULAIRE PERSONNE -> REALISATEUR/ACTEUR
+
+
     public function formulairePersonne(){
 
             if(isset($_POST['submitPers'])){
-                var_dump($_POST); die;
+                
+                // var_dump($_POST);die;
+
                 $nom = filter_input(INPUT_POST,"nom",FILTER_SANITIZE_SPECIAL_CHARS );
                 $prenom = filter_input(INPUT_POST,"prenom",FILTER_SANITIZE_SPECIAL_CHARS );
                 $date_naissance = filter_input(INPUT_POST,"date_naissance",FILTER_SANITIZE_SPECIAL_CHARS);
                 $sexe = filter_input(INPUT_POST,"sexe",FILTER_SANITIZE_SPECIAL_CHARS );
-                $metier = filter_input_array(INPUT_POST,"metier", FILTER_SANITIZE_SPECIAL_CHARS );
+                $metier = filter_input(INPUT_POST, "metier", FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
 
+                if($nom && $prenom && $date_naissance && $sexe && $metier){
+                
+
+                    $pdo = Connect::seConnecter();
+
+                    $requete=$pdo ->prepare('INSERT INTO personne (nom, prenom, date_naissance, sexe)
+                                                VALUES (:nom, :prenom, :date_naissance, :sexe)');
+                    $requete->execute(['nom' => $nom, 'prenom' => $prenom, 'date_naissance' => $date_naissance, 'sexe' => $sexe]);
+                    // La fonction lastInsertId va récupérer l'id de la personne et l'insérer dans la table réalisateur et/ou acteur. https://www.php.net/manual/fr/pdo.lastinsertid.php
+                    $personne_id = $pdo->lastInsertId();
+                    //On parcourt le tableau $métier pour ajouter la personne à réalisateur ou acteur
+                    foreach($metier as $value){
+                        if($value=='realisateur'){
+                            $requeteReal =$pdo ->prepare('INSERT INTO realisateur (id_personne)
+                                                        VALUES( :id_personne)');
+                            $requeteReal->execute(['id_personne' => $personne_id]);
+                        }elseif ($value=='acteur'){
+                            $requeteActeur =$pdo ->prepare('INSERT INTO acteur (id_personne)
+                                                    VALUES( :id_personne)');
+                            $requeteActeur->execute(['id_personne' => $personne_id]);
+                        }
+                    }
+                }
             }
 
 
