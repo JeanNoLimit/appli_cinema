@@ -2,7 +2,7 @@
 
 <div class="formulaire">
     <h3>Formulaire de saisie : <br> Nouveau film </h3>
-    <form action="" method="post">
+    <form action="index.php?action=formulaireFilm" method="post">
 
         <div>
             <label for="titre" class="label">Titre : 

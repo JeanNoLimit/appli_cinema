@@ -94,6 +94,7 @@ class PersonneController {
                     $requete=$pdo ->prepare('INSERT INTO personne (nom, prenom, date_naissance, sexe)
                                                 VALUES (:nom, :prenom, :date_naissance, :sexe)');
                     $requete->execute(['nom' => $nom, 'prenom' => $prenom, 'date_naissance' => $date_naissance, 'sexe' => $sexe]);
+                    
                     // La fonction lastInsertId va récupérer l'id de la personne et l'insérer dans la table réalisateur et/ou acteur. https://www.php.net/manual/fr/pdo.lastinsertid.php
                     $personne_id = $pdo->lastInsertId();
                     //On parcourt le tableau $métier pour ajouter la personne à réalisateur ou acteur
