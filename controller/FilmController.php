@@ -45,7 +45,7 @@ class FilmController {
 
      public function detailFilm($id) {
         $pdo = Connect::seConnecter();
-        $requete_film= $pdo->prepare('SELECT affiche, note, GROUP_CONCAT(libelle_genre SEPARATOR " / ") AS genres, f.id_film, titre, nom, prenom, f.id_realisateur, DATE_FORMAT(date_sortie, "%d/%m/%Y") AS date_sortie, TIME_FORMAT(SEC_TO_TIME(duree*60),"%H h %i") AS duree
+        $requete_film= $pdo->prepare('SELECT affiche, note, GROUP_CONCAT(libelle_genre SEPARATOR " , ") AS genres, f.id_film, titre, nom, prenom, f.id_realisateur, DATE_FORMAT(date_sortie, "%d/%m/%Y") AS date_sortie, TIME_FORMAT(SEC_TO_TIME(duree*60),"%H h %i") AS duree
                                         FROM film f
                                         INNER JOIN realisateur r ON f.id_realisateur=r.id_realisateur
                                         INNER JOIN personne p ON p.id_personne=r.id_personne
@@ -89,20 +89,59 @@ class FilmController {
             $date_sortie=filter_input(INPUT_POST, "date_sortie", FILTER_SANITIZE_SPECIAL_CHARS);
             $duree=filter_input(INPUT_POST, "duree", FILTER_VALIDATE_INT );
             $id_realisateur=filter_input(INPUT_POST, "id_realisateur", FILTER_VALIDATE_INT );
+            // Si une note a été rentré dans le formulaire alors il faut filtrer le résultat, sinon renvoyer "null"
+            
             if(isset($_POST['note']) && !empty($_POST['note'])){
                 $note=filter_input(INPUT_POST,"note", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION); //FILTER_FLAG_FRACTION est ajouté pour permettre l'utilisation du caractère , ou . pour la décimale
             }else{
                 $note=null;
             }
-            
-            
+
+            // On récupère les données de l'image
+            if(isset($_FILES['affiche'])){
+                $tmpName = $_FILES['affiche']['tmp_name'];
+                $name = $_FILES['affiche']['name'];
+                $size = $_FILES['affiche']['size'];
+                $error = $_FILES['affiche']['error'];
+            }
+            // ***********VERIFICATIONS FICHIER IMAGE*********************//
+            //On va vérifier l'extension du fichier pour n'accepter que les images
+            //      1. On découpe le nom du fichier au niveau du point . -> Renvoie le résultat dans un tableau $tabExtension
+            //      2. On récupère le dernier élément du tableau. strtolower permet de mettre en minuscule la chaine de caractère
+            $tabExtension = explode('.', $name);
+            $extension = strtolower(end($tabExtension));
+            // On liste les extensions autorisé
+            $extensions= ['jpg', 'png', 'jpeg', 'gif'];
+            //Taille max que l'on accepte (en bytes) 1Mo;
+            $tMax= 1048576;
+
+
+            if(in_array($extension, $extensions) && $size<=$tMax && $error==0) {
+
+                // uniqid() est une fonction qui permet de générer un nom unique. 2 arguments : La chaine de caractère qui sert de préfixe et un booléen pour augmenter la taille de chaîne pour + de sécurité
+                $uniqueName =uniqid('', true);
+                $file=$uniqueName.".".$extension;
+
+                // Fonction qui permet de déplacer le fichier dans le bon dossier. https://www.php.net/manual/fr/function.move-uploaded-file.php
+                move_uploaded_file($tmpName, './upload/'. $file);
+            }else {
+                echo "Mauvaise extension ou image trop importante";
+            }
+
+
+
+
+
+
+
+            // Si les filtres ont renvoyé un résultat dans les variables....
             if($titre && $id_genres && $date_sortie && $duree && $id_realisateur){
                
                 $pdo= Connect::seConnecter();
                 // Requête pour insérer les données dans la table film
-                $requete_film = $pdo ->prepare('INSERT INTO film(titre, date_sortie, duree, note, id_realisateur)
-                                                     VALUES (:titre, :date_sortie, :duree, :note, :id_realisateur)');
-                $requete_film->execute(['titre' => $titre, 'date_sortie' => $date_sortie, 'duree' => $duree, 'note' => $note,'id_realisateur' => $id_realisateur]);
+                $requete_film = $pdo ->prepare('INSERT INTO film(titre, date_sortie, duree, note, id_realisateur, affiche)
+                                                     VALUES (:titre, :date_sortie, :duree, :note, :id_realisateur, :affiche)');
+                $requete_film->execute(['titre' => $titre, 'date_sortie' => $date_sortie, 'duree' => $duree, 'note' => $note,'id_realisateur' => $id_realisateur, 'affiche' => $file]);
 
                 // On récupère l'identifiant du film créée
                 $film_id = $pdo->lastInsertId();
