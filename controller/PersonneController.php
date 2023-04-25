@@ -12,8 +12,9 @@ class PersonneController {
         $requete = $pdo->query('SELECT nom, prenom, a.id_acteur
                                     FROM personne p
                                     INNER JOIN acteur a ON p.id_personne=a.id_personne
-                                    ORDER BY nom, prenom;
-        ');
+                                    INNER JOIN jouer j ON a.id_acteur=j.id_acteur
+                                    GROUP BY a.id_acteur
+                                    ORDER BY nom, prenom;');
         require "view/listActeurs.php";
     }
     //Méthode pour lister les réalisateurs
