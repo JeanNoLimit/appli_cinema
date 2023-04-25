@@ -28,16 +28,24 @@ class CastingController {
         require "view/detailRole.php";
     }
 
-    //VUES FORMULAIRES
+    //**************************VUES FORMULAIRES****************************//
 
-        //Formulaire rôle
+        //*******************Formulaire rôle********************//
+
     public function formulaireRole(){
-        // Si la variable $_POST exsite
+
+        
         if(isset($_POST['submitRole'])){
+      
+        // Si la variable $_POST exsite
             // On filtre la varialbe nom_role pour remplacer les caractères spéciaux (p.e. < ou >) en entités HTML pour éviter l'insersion de code 
             $nom_role = filter_input(INPUT_POST,"nom_role",FILTER_SANITIZE_SPECIAL_CHARS );
             //Si "nom_role" a passé le test et que la variable $nom_role renvoie un résultat :
             if($nom_role){
+
+                if(strlen($nom_role)>50){
+                    $_SESSION['messageAlert']="Le nom du rôle ne doit pas dépasser 50 caractères";
+                }else{
                 //Connection à la bd.
                 $pdo = Connect::seConnecter();
                 //Préparer la requête permet de prévenir les attaques par injection SQL en éliminant le besoin de protéger les paramètres manuellement.https://www.php.net/manual/fr/pdo.prepare.php
@@ -46,15 +54,17 @@ class CastingController {
                 // les "doubles-points" : signifient qu'on appelle une variable hôte (variable du language hôte -> php)
                 $req->execute(["nom_role" => $nom_role]);
 
-
-                
+                $_SESSION['messageSucces']="rôle enregistré avec succès.";
+                }
+ 
             }
 
         }
         require "view/formulaireRole.php";
     }
 
-        //FORMULAIRE CASTING
+        //**********************FORMULAIRE CASTING***********************//
+
     public function formulaireCasting(){
         // On récupère la liste des films
         $pdo = Connect::seConnecter();
@@ -80,18 +90,15 @@ class CastingController {
             $id_acteur=filter_input(INPUT_POST, "id_acteur", FILTER_VALIDATE_INT );
             $id_role=filter_input(INPUT_POST, "id_role", FILTER_VALIDATE_INT );
 
-        if($id_film && $id_acteur && $id_role){
-                $pdo= Connect::seConnecter();
-            $requete_casting= $pdo->prepare('INSERT INTO jouer (id_film, id_acteur, id_role)
-                                                VALUES( :id_film, :id_acteur, :id_role)');
-            $requete_casting->execute(['id_film'=>$id_film, 'id_acteur'=>$id_acteur, 'id_role'=>$id_role]);
+            if($id_film && $id_acteur && $id_role){
+                    $pdo= Connect::seConnecter();
+                $requete_casting= $pdo->prepare('INSERT INTO jouer (id_film, id_acteur, id_role)
+                                                    VALUES( :id_film, :id_acteur, :id_role)');
+                $requete_casting->execute(['id_film'=>$id_film, 'id_acteur'=>$id_acteur, 'id_role'=>$id_role]);
+                $_SESSION['messageSucces']="casting enregistré avec succès.";
+            }
         }
-        }
 
-
-
-
-                                        
         require "view/formulaireCasting.php";
 
     }
