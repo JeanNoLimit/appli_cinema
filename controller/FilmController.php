@@ -93,8 +93,14 @@ class FilmController {
             $date_sortie=filter_input(INPUT_POST, "date_sortie", FILTER_SANITIZE_SPECIAL_CHARS);
             $duree=filter_input(INPUT_POST, "duree", FILTER_VALIDATE_INT );
             $id_realisateur=filter_input(INPUT_POST, "id_realisateur", FILTER_VALIDATE_INT );
+
+            // Si un sysnopsis a été rentré dans le formulaire alors il faut filtrer le résultat, sinon renvoyer "null"
+            if(isset($_POST['synopsis']) && !empty($_POST['synopsis'])){
+                $synopsis=filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_SPECIAL_CHARS);
+            }else{
+                $synopsis=null;
+            }
             // Si une note a été rentré dans le formulaire alors il faut filtrer le résultat, sinon renvoyer "null"
-            
             if(isset($_POST['note']) && !empty($_POST['note'])){
                 $note=filter_input(INPUT_POST,"note", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION); //FILTER_FLAG_FRACTION est ajouté pour permettre l'utilisation du caractère , ou . pour la décimale
             }else{
@@ -138,9 +144,9 @@ class FilmController {
                
                 $pdo= Connect::seConnecter();
                 // Requête pour insérer les données dans la table film
-                $requete_film = $pdo ->prepare('INSERT INTO film(titre, date_sortie, duree, note, id_realisateur, affiche)
-                                                     VALUES (:titre, :date_sortie, :duree, :note, :id_realisateur, :affiche)');
-                $requete_film->execute(['titre' => $titre, 'date_sortie' => $date_sortie, 'duree' => $duree, 'note' => $note,'id_realisateur' => $id_realisateur, 'affiche' => $file]);
+                $requete_film = $pdo ->prepare('INSERT INTO film(titre, date_sortie, duree, note, id_realisateur, affiche, synopsis)
+                                                     VALUES (:titre, :date_sortie, :duree, :note, :id_realisateur, :affiche, :synopsis)');
+                $requete_film->execute(['titre' => $titre, 'date_sortie' => $date_sortie, 'duree' => $duree, 'note' => $note,'id_realisateur' => $id_realisateur, 'affiche' => $file, 'synopsis' => $synopsis]);
 
                 // On récupère l'identifiant du film créée
                 $film_id = $pdo->lastInsertId();
