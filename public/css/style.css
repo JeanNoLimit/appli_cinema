@@ -67,6 +67,10 @@ a:hover {
     
 }
 
+#contenu h2{
+    padding-bottom: 15px;
+}
+
 
 /****************** Toutes les pages  *****************************/
 
@@ -264,4 +268,32 @@ textarea {
 
 .button {
     margin-top: 20px;
+}
+
+
+
+/*******************affichages messages formulaires **************/
+
+#conteneur_messages{
+    height: 80px;
+    
+}
+
+.message {
+    height:70px;
+    width: 70%;
+    margin: auto;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert {
+    background-color: rgba(247, 0, 0, 0.34);
+}
+
+.succes {
+    border: solid 1px #05d305;
+    background-color :rgba(109, 197, 109 , 0.34);
 }
