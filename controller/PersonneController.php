@@ -20,11 +20,12 @@ class PersonneController {
 
     public function listRealisateurs() {
         $pdo = Connect::seConnecter();
-        $requete = $pdo->query('SELECT nom, prenom, id_realisateur
+        $requete = $pdo->query('SELECT nom, prenom, r.id_realisateur
                                     FROM personne p
                                     INNER JOIN realisateur r ON p.id_personne=r.id_personne
-                                    ORDER BY nom, prenom;'        
-        );
+                                    INNER JOIN film f ON f.id_realisateur=r.id_realisateur
+                                    GROUP BY r.id_realisateur
+                                    ORDER BY nom, prenom');
         require "view/listRealisateurs.php";
     }
 
