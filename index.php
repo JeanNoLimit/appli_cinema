@@ -5,7 +5,7 @@
 
 // On "use" les contrôleurs cinema. Permet d'importer les controllers
 // https://www.php.net/manual/fr/language.namespaces.importing.php
-use Controller\CinemaController;
+
 use Controller\FilmController;
 use Controller\PersonneController;
 use Controller\CastingController;
