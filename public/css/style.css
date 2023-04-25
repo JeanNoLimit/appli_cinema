@@ -225,7 +225,6 @@ table a:hover{
     text-align: center;
     padding: 20px;
     border-radius: 50px;
-    max-width: 400px;
     margin-top: 40px;
     background-color: #e6e6e6;
     box-shadow: 5px 5px 5px #808080;
@@ -239,7 +238,19 @@ table a:hover{
     font-style: italic;
     font-size: 0.8em ;
     color:#808080;
+}
 
+.formulaire_sm{
+    max-width: 400px;
+}
+
+.formulaire_film {
+    max-width: 800px;
+}
+
+textarea {
+    width: 90%;
+    height: 80px;
 }
 /* taille zone de saisie de la durée et note */
 .form_num{
@@ -251,6 +262,6 @@ table a:hover{
     font-weight: 600;
 }
 
-button {
-    margin-top: 30px;
+.button {
+    margin-top: 20px;
 }

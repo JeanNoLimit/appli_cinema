@@ -1,6 +1,6 @@
 <?php ob_start()?>
 
-<div class="formulaire">
+<div class="formulaire formulaire_film">
     <h3>Formulaire de saisie : <br> Nouveau film </h3>
     <!-- Pour pouvoir soumettre un formulaire avec un type file il faut rajouer l'attribut enctype="multipart/form-data" dans la balise form -->
     <form action="index.php?action=formulaireFilm" method="post" enctype="multipart/form-data"> 
@@ -42,6 +42,10 @@
         </div>
         
         <div>
+            <label for="synopsis" class=label> Synopsis : </label>
+            <textarea name="synopsis" id="synopsis" ></textarea>
+        </div>
+        <div>
             <label for="affiche" class="label">Insérer une affiche (1Mo. max) : </label><span class="info_complementaire">(Optionnel)</span>
                 <input type="file" name="affiche" id="affiche" accept=".png, .jpeg, .jpg, .gif">
         </div> 
@@ -50,7 +54,7 @@
             <label for="note" class="label">Note : </label><span class="info_complementaire">(Optionnel)</span>
                 <input type="number" name="note" id="note" min="0" max="5" step="0.1" class="form_num"> /5  
         </div>
-        <input type="submit" value="Ajouter" name="submitFilm">
+        <input type="submit" value="Ajouter" name="submitFilm" class="button">
     </form>
 </div>
 

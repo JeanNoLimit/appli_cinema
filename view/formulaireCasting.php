@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<div class="formulaire">
+<div class="formulaire formulaire_sm">
     <form action="index.php?action=forumlaireCasting" method="post">
     <!-- Liste des films -->
     <div>
@@ -30,14 +30,14 @@
             </select>      
     </div>
 
-       <input type="submit" value="Ajouter" name="submitCasting">
+       <input type="submit" value="Ajouter" name="submitCasting" class="button">
 
     </form>
 </div>
 
 <?php
 $titre="Formulaire Casting";
-$titre_secondaire="";
+$titre_secondaire="Formulaire de saisie d'un nouveau casting";
 $contenu=ob_get_clean();
 require "view/template.php";
 ?>

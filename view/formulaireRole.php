@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 
-<div class="formulaire">
+<div class="formulaire formulaire_sm">
     <h3>Formulaire de saisie : <br> Nouveau rôle </h3>
     <form action="index.php?action=formulaireRole" method="post">
 
@@ -11,7 +11,7 @@
             </label>
         </div>
 
-       <input type="submit" value="Envoyer" name="submitRole">
+       <input type="submit" value="Envoyer" name="submitRole" class="button">
 
     </form>
 </div>
@@ -22,6 +22,6 @@
 <?php
 
 $titre="Formulaire Nouveau rôle";
-$titre_secondaire="";
+$titre_secondaire="Formulaire de saisie d'un nouveau rôle";
 $contenu=ob_get_clean();
 require "view/template.php";

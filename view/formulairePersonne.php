@@ -1,6 +1,6 @@
 <?php ob_start()?>
 
-<div class="formulaire">
+<div class="formulaire formulaire_sm">
     <h3>Formulaire de saisie : <br> Nouveau réalisateur/acteur </h3>
     <form action="index.php?action=formulairePersonne" method="post">
         <div>
@@ -35,7 +35,7 @@
                 <label for="acteur">acteur</label>
         </div>
         
-        <input type="submit" name="submitPers" value="Ajouter" />
+        <input type="submit" name="submitPers" value="Ajouter" class="button">
     </form>
 </div>
 
