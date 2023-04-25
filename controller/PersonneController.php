@@ -52,6 +52,7 @@ class PersonneController {
         require "view/detailReal.php";
 
     }
+
     //Méthodes pour afficher les informations d'un acteur ainsi que sa filmographie VUE DETAILACTEUR
     public function detailActeur($id) {
         $pdo = Connect::seConnecter();
@@ -73,7 +74,7 @@ class PersonneController {
         require "view/detailActeur.php";
     }
 
-    // VUES FORMULAIRE PERSONNE -> REALISATEUR/ACTEUR
+    //**************************** VUE FORMULAIRE PERSONNE -> REALISATEUR/ACTEUR ***************************//
 
 
     public function formulairePersonne(){
@@ -89,27 +90,33 @@ class PersonneController {
                 $metier = filter_input(INPUT_POST, "metier", FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
 
                 if($nom && $prenom && $date_naissance && $sexe && $metier){
-                
+                    if(strlen($nom)>50 ||strlen($prenom)>50){
+                        $_SESSION['messageAlert']="Nom et prénom ne doivent pas dépasser 50 caractères.";
+                    }elseif( date("Y-m-d")<$date_naissance){
+                        $_SESSION['messageAlert']="Veuillez rentrer une date valide";
+                    }else{
 
-                    $pdo = Connect::seConnecter();
+                        $pdo = Connect::seConnecter();
 
-                    $requete=$pdo ->prepare('INSERT INTO personne (nom, prenom, date_naissance, sexe)
-                                                VALUES (:nom, :prenom, :date_naissance, :sexe)');
-                    $requete->execute(['nom' => $nom, 'prenom' => $prenom, 'date_naissance' => $date_naissance, 'sexe' => $sexe]);
-                    
-                    // La fonction lastInsertId va récupérer l'id de la personne et l'insérer dans la table réalisateur et/ou acteur. https://www.php.net/manual/fr/pdo.lastinsertid.php
-                    $personne_id = $pdo->lastInsertId();
-                    //On parcourt le tableau $métier pour ajouter la personne à réalisateur ou acteur
-                    foreach($metier as $value){
-                        if($value=='realisateur'){
-                            $requeteReal =$pdo ->prepare('INSERT INTO realisateur (id_personne)
+                        $requete=$pdo ->prepare('INSERT INTO personne (nom, prenom, date_naissance, sexe)
+                                                    VALUES (:nom, :prenom, :date_naissance, :sexe)');
+                        $requete->execute(['nom' => $nom, 'prenom' => $prenom, 'date_naissance' => $date_naissance, 'sexe' => $sexe]);
+                        
+                        // La fonction lastInsertId va récupérer l'id de la personne et l'insérer dans la table réalisateur et/ou acteur. https://www.php.net/manual/fr/pdo.lastinsertid.php
+                        $personne_id = $pdo->lastInsertId();
+                        //On parcourt le tableau $métier pour ajouter la personne à réalisateur ou acteur
+                        foreach($metier as $value){
+                            if($value=='realisateur'){
+                                $requeteReal =$pdo ->prepare('INSERT INTO realisateur (id_personne)
+                                                            VALUES( :id_personne)');
+                                $requeteReal->execute(['id_personne' => $personne_id]);
+                            }elseif ($value=='acteur'){
+                                $requeteActeur =$pdo ->prepare('INSERT INTO acteur (id_personne)
                                                         VALUES( :id_personne)');
-                            $requeteReal->execute(['id_personne' => $personne_id]);
-                        }elseif ($value=='acteur'){
-                            $requeteActeur =$pdo ->prepare('INSERT INTO acteur (id_personne)
-                                                    VALUES( :id_personne)');
-                            $requeteActeur->execute(['id_personne' => $personne_id]);
-                        }
+                                $requeteActeur->execute(['id_personne' => $personne_id]);
+                            }
+                        }  
+                        $_SESSION['messageSucces']="rôle enregistré avec succès.";
                     }
                 }
             }
