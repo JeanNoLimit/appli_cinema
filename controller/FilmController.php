@@ -15,7 +15,7 @@ class FilmController {
                                     FROM film f
                                     INNER JOIN realisateur r ON f.id_realisateur=r.id_realisateur
                                     INNER JOIN personne p ON p.id_personne=r.id_personne
-                                    ORDER BY titre;
+                                    ORDER BY anne_sortie DESC;
         ');
         require "view/listFilms.php";
     }
@@ -36,7 +36,7 @@ class FilmController {
                                             INNER JOIN posseder p ON f.id_film=p.id_film
                                             INNER JOIN genre g ON p.id_genre=g.id_genre
                                             WHERE g.id_genre= :id
-                                            ORDER BY titre');
+                                            ORDER BY anne_sortie DESC;');
         $requete_liste ->execute(["id" => $id]);
         require "view/parGenres.php";
     }
