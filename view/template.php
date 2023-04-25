@@ -1,3 +1,6 @@
+<?php
+ require_once "services/functions.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,9 +42,14 @@
         </nav>
     </header>
     <main>
+
         <div id=contenu>
             <h1>PDO Cinema</h1>
             <h2><?= $titre_secondaire ?></h2>
+            <!-- permet affichage d'un message lors de l'envoie du formulaire -->  
+            <div id=conteneur_messages>      
+                <?= getMessage();?>
+            </div>
             <?= $contenu ?>
         </div>
     </main>
